@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>Bank</h1><h4>Support Portal</h4>
+</div>
+
+<form #f="ngForm" novalidate (ngSubmit)="f.form.valid && login(f.value, f.valid)">
+  <div class="mail">
+    <!--<md-icon >person</md-icon>-->
+    <input type="email" placeholder="E-mail"
+           class="email"
+           [ngClass]=" {'invalid': user.email< 10, 'type': user.email>= 10 }"
+
+           [ngModel]="user.email"
+           #email="NgModel"
+           required
+           pattern="^[a-zA-Z0–9_.+-]+@[a-zA-Z0–9-]+.[a-zA-Z0–9-.]+$">
+    <small [hidden]="email.valid || !f.submitted && email.pristine"></small>
+
+  </div>
+  <div class="pass">
+    <!--<md-icon>lock</md-icon>-->
+    <input type="password" placeholder="Password" [ngModel]="user.password" #password="NgModel" required >
+    <small [hidden]="password.valid || !f.submitted && password.pristine"></small>
+
+  </div>
+
+  <div class="btn">
+    <button type="submit" >Login</button>
+  </div>
+
+</form>
